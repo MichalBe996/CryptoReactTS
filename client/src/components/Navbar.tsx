@@ -1,27 +1,26 @@
 import React from 'react'
-import {useNavigate} from "react-router-dom"
+import mainLogo from "../assets/income_8225282.png"
+
 
 const Navbar = () => {
-    const navigate = useNavigate()
-    function navigateHome() {
-        navigate("/")
-    }
-    function navigateDash(){
-        navigate("/dashboard")
-    }
-
+    
+   
   return (
-    <nav className='navbar'>
-        <div className='logo-div'>
-            <h1>LOGO placeholder</h1>
+    <header className='navbar'>
+        <div className='logo-name'>
+            <img src={mainLogo} alt="logo" className='logo'/>   
+            <h3 className='page-name'>CryptoTSR</h3>
         </div>
-        <div className="nav-buttons">
-            <button onClick={navigateHome}>Home</button>
-            <button onClick={navigateDash}>Dashboard</button>
-            <button>About</button>
-        </div>
+        
+        <nav>
+            <ul className='nav--links'>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/">About</a></li>
+            </ul>
+        </nav>
 
-    </nav>
+    </header>
   )
 }
 

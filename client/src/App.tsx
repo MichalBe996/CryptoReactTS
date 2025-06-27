@@ -11,14 +11,14 @@ import { Container } from "react-bootstrap"
 
 function App() {
   return (
-    <Container className="my-4">
+    <>
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/about" element={<About/>}/>
       <Route path="*" element={<Navigate to="/"/>}/>
     </Routes>
-    </Container>
+    </>
     
   );
 }
