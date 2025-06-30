@@ -65,3 +65,17 @@ header {
   color: #51158C
 }
 
+.table-body-div {
+  display: flex;
+  justify-content: center;
+  padding: 70px 30px;
+}
+
+
+thead > tr td {
+  font-weight: 400;
+  font-size: 20px;
+  padding: 20px 60px;
+  color:#edf0f1;
+  background-color: #51158C;
+}
