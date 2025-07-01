@@ -2,13 +2,32 @@ import React from 'react'
 
 
 const TableComponent = () => {
+  interface apiElement {
+    name: string,
+    symbol: string,
+    quote: object
+
+  }
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [apiData, setApiData] = React.useState<apiElement[]>([])
+  
+  React.useEffect(()=> {
+    fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=${process.env.REACT_APP_API_KEY}`)
+    .then(res=>{
+      return res.json()
+    })
+    .then(data=>{
+      setApiData(data)
+    })
+
+  }, [])
+  console.log(apiData)
   const tableHeaders = [
-    {key: "col1", label: "col1"},
-    {key: "col2", label: "col2"},
-    {key: "col3", label: "col3"},
-    {key: "col4", label: "col4"},
-    {key: "col5", label: "col5"}
+    {key: "name", label: "Name"},
+    {key: "symbol", label: "Symbol"},
+    {key: "price", label: "Price (USD)"},
+    {key: "quote.USD.percent_change_1h", label: "% change (1h)"},
+    {key: "quote.USD.percent_change_24h", label: "% change (24h)"}
   ]
   return (
     isLoading ? <h2>Loading...</h2> : 
