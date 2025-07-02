@@ -19,23 +19,23 @@ const TableComponent = () => {
       percent24H: -2
     },
     {
-      name: "Bitcoin",
-      symbol: "BTC",
-      price: 24000,
+      name: "Ethereum",
+      symbol: "ETH",
+      price: 2463.83,
       percent1H: 1.4,
       percent24H: -2
     },
     {
-      name: "Bitcoin",
-      symbol: "BTC",
-      price: 24000,
-      percent1H: 1.4,
+      name: "Avalanche",
+      symbol: "AVAX",
+      price: 17.46,
+      percent1H: -0.7,
       percent24H: -2
     },
     {
-      name: "Bitcoin",
-      symbol: "BTC",
-      price: 24000,
+      name: "Cardano",
+      symbol: "ADA",
+      price: 0.56,
       percent1H: 1.4,
       percent24H: -2
     },
@@ -48,7 +48,7 @@ const TableComponent = () => {
  
   const tableHeaders = [
     {key: "name", label: "Name"},
-    {key: "symbol", label: "Symbol"},
+    
     {key: "price", label: "Price (USD)"},
     {key: "quote.USD.percent_change_1h", label: "% change (1h)"},
     {key: "quote.USD.percent_change_24h", label: "% change (24h)"}
@@ -64,11 +64,24 @@ const TableComponent = () => {
             return <td key={element.key}>{element.label}</td>
           })}
           </tr>
-          <tbody>
-
-          </tbody>
+          
           
         </thead>
+        <tbody>
+          {apiData.map((crypto)=>{
+            return(
+              <tr key={crypto.name}>
+                <td>{`${crypto.name} • ${crypto.symbol}`}</td>
+                
+                <td>{crypto.price}</td>
+                {crypto.percent1H > 0 ? <td className='td-green'>{crypto.percent1H}</td> : <td className='td-red'>{crypto.percent1H}</td>}
+                {crypto.percent24H > 0 ? <td className='td-green'>{crypto.percent24H}</td> : <td className='td-red'>{crypto.percent24H}</td>}
+                
+
+              </tr>
+            )
+          })}
+          </tbody>
 
       </table>
 
