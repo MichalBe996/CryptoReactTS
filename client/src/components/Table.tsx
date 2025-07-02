@@ -6,23 +6,45 @@ const TableComponent = () => {
   interface apiElement {
     name: string,
     symbol: string,
-    quote: object
-
+    price: number,
+    percent1H: number,
+    percent24H: number
   }
+  const [apiData, setApiData] = React.useState<apiElement[]>([
+    {
+      name: "Bitcoin",
+      symbol: "BTC",
+      price: 24000,
+      percent1H: 1.4,
+      percent24H: -2
+    },
+    {
+      name: "Bitcoin",
+      symbol: "BTC",
+      price: 24000,
+      percent1H: 1.4,
+      percent24H: -2
+    },
+    {
+      name: "Bitcoin",
+      symbol: "BTC",
+      price: 24000,
+      percent1H: 1.4,
+      percent24H: -2
+    },
+    {
+      name: "Bitcoin",
+      symbol: "BTC",
+      price: 24000,
+      percent1H: 1.4,
+      percent24H: -2
+    },
 
-  const fetchData = async (apiKey:any) => {
-    const response = await axios.get(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=${apiKey}`)
-    console.log(response)
-  }
-  const [isLoading, setIsLoading] = React.useState<boolean>(true)
-  const [apiData, setApiData] = React.useState<apiElement[]>([])
+  ])
+
+ 
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
   
-  React.useEffect(()=> {
-    fetchData(process.env.REACT_APP_API_KEY)
-    setIsLoading(false)
-    
-
-  }, [])
  
   const tableHeaders = [
     {key: "name", label: "Name"},
@@ -42,6 +64,9 @@ const TableComponent = () => {
             return <td key={element.key}>{element.label}</td>
           })}
           </tr>
+          <tbody>
+
+          </tbody>
           
         </thead>
 
