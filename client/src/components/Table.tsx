@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 
 const TableComponent = () => {
@@ -8,20 +9,21 @@ const TableComponent = () => {
     quote: object
 
   }
-  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+
+  const fetchData = async (apiKey:any) => {
+    const response = await axios.get(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=${apiKey}`)
+    console.log(response)
+  }
+  const [isLoading, setIsLoading] = React.useState<boolean>(true)
   const [apiData, setApiData] = React.useState<apiElement[]>([])
   
   React.useEffect(()=> {
-    fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=${process.env.REACT_APP_API_KEY}`)
-    .then(res=>{
-      return res.json()
-    })
-    .then(data=>{
-      setApiData(data)
-    })
+    fetchData(process.env.REACT_APP_API_KEY)
+    setIsLoading(false)
+    
 
   }, [])
-  console.log(apiData)
+ 
   const tableHeaders = [
     {key: "name", label: "Name"},
     {key: "symbol", label: "Symbol"},
