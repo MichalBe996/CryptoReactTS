@@ -9,14 +9,21 @@ const TableComponent = () => {
     price: number,
     percent1H: number,
     percent24H: number
+
+  }
+  const [keyToSort, setKeyToSort] = React.useState<string>()
+  const [sortOrder, setSortOrder] = React.useState<string[]>(["asc", "desc"])
+  const clickOnHeader = (header: any) => {
+    setKeyToSort(header.key)
+    console.log(keyToSort)
   }
   const [apiData, setApiData] = React.useState<apiElement[]>([
     {
       name: "Bitcoin",
       symbol: "BTC",
-      price: 24000,
+      price: 109436.10,
       percent1H: 1.4,
-      percent24H: -2
+      percent24H: -1.6
     },
     {
       name: "Ethereum",
@@ -37,7 +44,7 @@ const TableComponent = () => {
       symbol: "ADA",
       price: 0.56,
       percent1H: 1.4,
-      percent24H: -2
+      percent24H: 7
     },
 
   ])
@@ -61,7 +68,7 @@ const TableComponent = () => {
         <thead>
           <tr>
             {tableHeaders.map((element)=>{
-            return <td key={element.key}>{element.label}</td>
+            return <td key={element.key} onClick={()=>{clickOnHeader(element)}}>{element.label}</td>
           })}
           </tr>
           
