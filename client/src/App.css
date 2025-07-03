@@ -98,3 +98,18 @@ tbody > tr td {
 .td-red {
   color: #FF3131;
 }
+
+.up-arrow-invisible {
+  visibility: hidden;
+  font-size: 30px;
+  
+}
+
+.up-arrow-visible {
+  visibility: visible;
+  background-color: #51158C;
+  font-size: 30px;
+  
+  
+
+}

@@ -68,7 +68,8 @@ const TableComponent = () => {
         <thead>
           <tr>
             {tableHeaders.map((element)=>{
-            return <td key={element.key} onClick={()=>{clickOnHeader(element)}}>{element.label}</td>
+            return <td key={element.key} 
+            onClick={()=>{clickOnHeader(element)}}>{element.label} {keyToSort===element.key? <span className='up-arrow-visible'>▵</span>: <span className='up-arrow-invisible'>▵</span>}</td>
           })}
           </tr>
           
