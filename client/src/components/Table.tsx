@@ -17,6 +17,7 @@ const TableComponent = () => {
     if(keyToSort === header.key){
       sortOrder === "desc" ? setSortOrder("asc") : setSortOrder("desc")
     }else{
+      setSortOrder("asc")
       setKeyToSort(header.key)  
     }
     
