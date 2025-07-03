@@ -104,7 +104,11 @@ tbody > tr td {
   font-size: 30px;
   
 }
-
+.down-arrow-visible {
+  visibility: visible;
+  background-color: #51158C;
+  font-size: 30px;
+}
 .up-arrow-visible {
   visibility: visible;
   background-color: #51158C;

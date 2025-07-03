@@ -12,10 +12,15 @@ const TableComponent = () => {
 
   }
   const [keyToSort, setKeyToSort] = React.useState<string>()
-  const [sortOrder, setSortOrder] = React.useState<string[]>(["asc", "desc"])
+  const [sortOrder, setSortOrder] = React.useState<string>("desc")
   const clickOnHeader = (header: any) => {
-    setKeyToSort(header.key)
-    console.log(keyToSort)
+    if(keyToSort === header.key){
+      sortOrder === "desc" ? setSortOrder("asc") : setSortOrder("desc")
+    }else{
+      setKeyToSort(header.key)  
+    }
+    
+    
   }
   const [apiData, setApiData] = React.useState<apiElement[]>([
     {
@@ -69,7 +74,11 @@ const TableComponent = () => {
           <tr>
             {tableHeaders.map((element)=>{
             return <td key={element.key} 
-            onClick={()=>{clickOnHeader(element)}}>{element.label} {keyToSort===element.key? <span className='up-arrow-visible'>▵</span>: <span className='up-arrow-invisible'>▵</span>}</td>
+            onClick={()=>{clickOnHeader(element)}}>
+              {element.label} {keyToSort===element.key ? sortOrder==="asc"? 
+              <span className='up-arrow-visible'>▵</span>: 
+              <span className='down-arrow-visible'>▿</span>:
+              <span className='up-arrow-invisible'>▵</span>}</td>
           })}
           </tr>
           
