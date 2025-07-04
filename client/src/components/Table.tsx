@@ -20,8 +20,18 @@ const TableComponent = () => {
       setSortOrder("asc")
       setKeyToSort(header.key)  
     }
-    
-    
+}
+  const getSortedArray = (arrayToSort: apiElement[]) => {
+    if(keyToSort === "price" || keyToSort === "quote.USD.percent_change_1h" || keyToSort === "quote.USD.percent_change_24h"){
+      if(sortOrder === "asc"){
+        return arrayToSort.sort((a: any, b: any)=>a.price>b.price?1 : -1)
+      }
+      return arrayToSort.sort((a: any, b: any)=>b.price > a.price ? 1 : -1 )
+    }
+    if(sortOrder==="asc"){
+      return arrayToSort.sort((a: any, b: any)=> a.name.localeCompare(b.name))
+    }
+    return arrayToSort.sort((a: any, b: any)=> b.name.localeCompare(a.name))
   }
   const [apiData, setApiData] = React.useState<apiElement[]>([
     {
@@ -86,7 +96,7 @@ const TableComponent = () => {
           
         </thead>
         <tbody>
-          {apiData.map((crypto)=>{
+          {getSortedArray(apiData).map((crypto)=>{
             return(
               <tr key={crypto.name}>
                 <td>{`${crypto.name} • ${crypto.symbol}`}</td>
