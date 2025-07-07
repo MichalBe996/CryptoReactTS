@@ -22,15 +22,26 @@ const TableComponent = () => {
     }
 }
   const getSortedArray = (arrayToSort: apiElement[]) => {
+    
     if(keyToSort === "price" || keyToSort === "quote.USD.percent_change_1h" || keyToSort === "quote.USD.percent_change_24h"){
-      if(sortOrder === "asc"){
-        return arrayToSort.sort((a: any, b: any)=>a.price>b.price?1 : -1)
+      if(keyToSort==="price"){
+        if(sortOrder==="asc"){
+          return arrayToSort.sort((a:any, b:any)=> a.price > b.price ? 1 : -1)
+        }
+        return arrayToSort.sort((a:any, b:any)=> a.price > b.price ? -1 : 1)
       }
-      return arrayToSort.sort((a: any, b: any)=>b.price > a.price ? 1 : -1 )
-    }
-    if(sortOrder==="asc"){
-      return arrayToSort.sort((a: any, b: any)=> a.name.localeCompare(b.name))
-    }
+      if(keyToSort === "quote.USD.percent_change_1h"){
+        if(sortOrder==="asc"){
+          return arrayToSort.sort((a:any, b:any)=> a.percent1H > b.percent1H ? 1 : -1)
+        }
+        return arrayToSort.sort((a:any, b:any)=> a.percent1H > b.percent1H ? -1 : 1)
+      }}
+      if(keyToSort=== "quote.USD.percent_change_24h"){
+        if(sortOrder==="asc"){
+          return arrayToSort.sort((a: any, b:any)=> a.percent24H > b.percent24H ? 1 : -1)
+        }
+        return arrayToSort.sort((a: any, b:any)=> a.percent24H > b.percent24H ? -1 : 1)
+      }
     return arrayToSort.sort((a: any, b: any)=> b.name.localeCompare(a.name))
   }
   const [apiData, setApiData] = React.useState<apiElement[]>([
@@ -115,6 +126,6 @@ const TableComponent = () => {
 
     </div>
   )
-}
-
+    }
+  
 export default TableComponent
