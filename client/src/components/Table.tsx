@@ -42,7 +42,14 @@ const TableComponent = () => {
         }
         return arrayToSort.sort((a: any, b:any)=> a.percent24H > b.percent24H ? -1 : 1)
       }
-    return arrayToSort.sort((a: any, b: any)=> b.name.localeCompare(a.name))
+      else {
+        if(sortOrder === "asc"){
+          return arrayToSort.sort((a: any, b: any)=> b.name.localeCompare(a.name))   
+        }
+        return arrayToSort.sort((a: any, b: any)=> a.name.localeCompare(b.name))   
+ 
+      }
+    
   }
   const [apiData, setApiData] = React.useState<apiElement[]>([
     {
