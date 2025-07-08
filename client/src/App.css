@@ -117,3 +117,20 @@ tbody > tr td {
   
 
 }
+
+
+.about-main-div {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.about-icon {
+  
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  width: 500px;
+  margin-right: 70px;
+}
