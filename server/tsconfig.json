@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "module": "nodenext",
-        "moduleResolution": "node",
+        "moduleResolution": "nodenext",
         "baseUrl": "src",
         "outDir": "dist",
         "sourceMap": true,
