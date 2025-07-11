@@ -7,7 +7,9 @@ import cors from "cors"
 import dotenv from "dotenv"
 
 
-dotenv.config({path: "config.env"})
+dotenv.config({path: "./.env"})
+
+
 
 const app = express()
 
@@ -20,10 +22,18 @@ app.use(bodyParser.json())
 
 const server = http.createServer(app)
 
-server.listen(8080, ()=> {
-    console.log("Server is running on http://localhost:8080...")
+
+const port = process.env.SERVER_PORT || 6000;
+
+
+server.listen(port, ()=> {
+    console.log(`Server is running on http://localhost:${port}...`)
 })
 
 
 const MONGO_URL = "mongodb+srv://MichalBielawski:<PASSWORD>@cluster0.jlrmvqf.mongodb.net/cryptoDB?retryWrites=truenpm"
     .replace("<PASSWORD>", process.env.MONGO_PASSWORD)
+
+
+
+
