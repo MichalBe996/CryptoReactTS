@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser"
 import compression from "compression"
 import cors from "cors"
 import dotenv from "dotenv"
+import mongoose from "mongoose"
 
 
 dotenv.config({path: "./.env"})
@@ -31,9 +32,13 @@ server.listen(port, ()=> {
 })
 
 
-const MONGO_URL = "mongodb+srv://MichalBielawski:<PASSWORD>@cluster0.jlrmvqf.mongodb.net/cryptoDB?retryWrites=truenpm"
+const MONGO_URL = "mongodb+srv://MichalBielawski:<PASSWORD>@cluster0.jlrmvqf.mongodb.net/cryptoDB?retryWrites=true"
     .replace("<PASSWORD>", process.env.MONGO_PASSWORD)
 
+
+mongoose.Promise = Promise;
+mongoose.connect(MONGO_URL)
+mongoose.connection.on("error", (error: Error)=>console.log(error))
 
 
 
