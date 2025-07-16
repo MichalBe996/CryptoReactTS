@@ -6,7 +6,7 @@ export const getAllCrypto = async () => {
     try {
         const allCrypto = await CryptoModel.find()
     } catch (error) {
-        
+        console.log(error)
     }
 }
 
@@ -33,7 +33,7 @@ export const createCrypto = async (values: Record<string, any>) => {
     try {
       await new CryptoModel(values).save().then((user)=> user.toObject())
     } catch (error) {
-        
+        console.log(error)
     }
 
 }
@@ -51,6 +51,6 @@ export const updateCryptoById = async (id: string, values: Record<string, any>) 
     try {
         await CryptoModel.findByIdAndUpdate(id, values)
     } catch (error) {
-        
+        console.log(error)
     }
 }
