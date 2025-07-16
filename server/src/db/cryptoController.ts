@@ -28,11 +28,19 @@ export const getCryptoByName = async (name: string) => {
 }
 
 
-export const getCryptoById = async (id: string) => {
+export const getCryptoById = async (req: Request, res: Response) => {
     try {
+        const id = req.params.id
         const singleCrypto = await CryptoModel.findById(id)
+        res.status(200).json({
+            status: "Success",
+            data: singleCrypto
+        })
     } catch (error) {
-        
+        res.status(400).json({
+            status: "Fail",
+            message: error
+        })
     }
 }
 
@@ -56,10 +64,19 @@ export const createCrypto = async (req: Request, res: Response, values: Record<s
 }
 
 
-export const deleteCryptoById = async (id: string) => {
+export const deleteCryptoById = async (req: Request, res: Response) => {
     try {
-        await CryptoModel.findOneAndDelete({_id: id})
+        const id = req.params.id;
+        await CryptoModel.findByIdAndDelete(id)
+        res.status(200).json({
+            status: "Success",
+            message: "Crypto removed from database successfully"
+        })
     } catch (error) {
+        res.status(400).json({
+            status: "Fail",
+            message: error
+        })
         
     }
 }
