@@ -11,3 +11,6 @@ const CryptoSchema = new mongoose.Schema({
     percent24H: {type: Number, required: true}
 
 })
+
+
+export const CryptoModel = mongoose.model("Crypto", CryptoSchema)
