@@ -1,12 +1,21 @@
 import { CryptoModel } from "./cryptoModel"
+import {Request, Response, NextFunction} from "express"
 
 
-export const getAllCrypto = async () => {
+export const getAllCrypto = async (req: Request, res: Response) => {
     
     try {
         const allCrypto = await CryptoModel.find()
+        res.status(200).json({
+            status: "Success",
+            data: allCrypto
+        })
     } catch (error) {
-        console.log(error)
+        res.status(400).json({
+            status: "Fail",
+            message: error
+
+        })
     }
 }
 
@@ -28,12 +37,20 @@ export const getCryptoById = async (id: string) => {
 }
 
 
-export const createCrypto = async (values: Record<string, any>) => {
+export const createCrypto = async (req: Request, res: Response, values: Record<string, any>) => {
 
     try {
-      await new CryptoModel(values).save().then((user)=> user.toObject())
+      const values = req.body
+      let newCrypto = await new CryptoModel(values).save().then((user)=> user.toObject())
+      res.status(201).json({
+        status: "Success",
+        data: newCrypto
+      })
     } catch (error) {
-        console.log(error)
+        res.status(401).json({
+            status: "Fail",
+            message: error
+        })
     }
 
 }

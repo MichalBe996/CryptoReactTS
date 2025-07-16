@@ -6,7 +6,7 @@ import compression from "compression"
 import cors from "cors"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
-import { cryptoRouter } from "db/cryptoRouter"
+import cryptoRouter from "./db/cryptoRouter"
 
 
 dotenv.config({path: "./.env"})
