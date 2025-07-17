@@ -81,10 +81,21 @@ export const deleteCryptoById = async (req: Request, res: Response) => {
     }
 }
 
-export const updateCryptoById = async (id: string, values: Record<string, any>) => {
+export const updateCryptoById = async (req: Request, res: Response) => {
     try {
-        await CryptoModel.findByIdAndUpdate(id, values)
+        const crypto = await CryptoModel.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        })
+        res.status(201).json({
+            status: "Success",
+            message: "Entry has been updated succesfully",
+            data: crypto
+        })
     } catch (error) {
-        console.log(error)
+        res.status(400).json({
+            status: "Fail",
+            message: error
+        })
     }
 }
