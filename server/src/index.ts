@@ -7,6 +7,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
 import cryptoRouter from "./db/cryptoRouter"
+import userRouter from "./db/userRouter"
 
 
 dotenv.config({path: "./.env"})
@@ -22,6 +23,7 @@ app.use(compression())
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use("/api/v1/data", cryptoRouter)
+app.use("/api/v1/users", userRouter)
 
 const server = http.createServer(app)
 
