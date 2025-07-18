@@ -22,3 +22,30 @@ export const registerUser = async(req: Request, res: Response) => {
     }
 
 }
+
+export const loginUser = async(req: Request, res: Response) => {
+    const {email, password} = req.body
+    try {
+        const user = await UserModel.findOne({email})
+        if(!user){
+            res.status(400).json({
+                status: "Fail",
+                message: "Wrong email or password, try again"
+            })
+           
+        }else {
+            res.status(200).json({
+            status: "Success",
+            message: "User found"
+        })
+        }
+       
+
+    } catch (error) {
+        res.status(400).json({
+            status: "Fail",
+            message: error
+            
+        })
+    }
+}

@@ -1,10 +1,11 @@
-import express, { Router } from "express"
-import { registerUser } from "./authController"
+import express from "express"
+import { registerUser, loginUser } from "./authController"
 
 
 const userRouter = express.Router()
 
 userRouter.post("/register", registerUser)
+userRouter.post("/login", loginUser)
 
 
 
