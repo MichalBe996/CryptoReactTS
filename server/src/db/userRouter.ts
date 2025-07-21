@@ -4,8 +4,9 @@ import { registerUser, loginUser } from "./authController"
 
 const userRouter = express.Router()
 
+
+userRouter.route("/login").post(loginUser)
 userRouter.post("/register", registerUser)
-userRouter.post("/login", loginUser)
 
 
 

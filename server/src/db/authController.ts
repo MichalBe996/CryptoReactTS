@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { UserModel } from "./userModel";
+import bcrypt from "bcryptjs"
 
 
 
@@ -26,18 +27,24 @@ export const registerUser = async(req: Request, res: Response) => {
 export const loginUser = async(req: Request, res: Response) => {
     const {email, password} = req.body
     try {
-        const user = await UserModel.findOne({email})
+        const user = await UserModel.findOne({email}).select("+password")
         if(!user){
             res.status(400).json({
                 status: "Fail",
                 message: "Wrong email or password, try again"
             })
            
-        }else {
-            res.status(200).json({
-            status: "Success",
-            message: "User found"
-        })
+        }else{
+            const isMatch = await bcrypt.compare(password, user.password)
+            if(isMatch){
+                res.status(200).json({
+                    status: "CORRECT"
+                })
+            }else{
+                res.status(400).json({
+                    status: "INCORRECT"
+                })
+            }
         }
        
 
