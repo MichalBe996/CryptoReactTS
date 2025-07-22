@@ -44,6 +44,7 @@ export const loginUser = async(req: Request, res: Response) => {
             })
         }
         const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET, {expiresIn: "3h"})
+        res.cookie("bearer", token)
         res.status(201).json({
             status: "Success",
             token: token
