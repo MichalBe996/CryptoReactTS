@@ -4,6 +4,7 @@ import './App.css';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import About from './pages/About';
+import AdminLogin from './pages/adminLogin';
 import {Routes, Route, Navigate} from "react-router-dom"
 import { Container } from "react-bootstrap"
 
@@ -16,6 +17,8 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/about" element={<About/>}/>
+      <Route path="/adminLogin" element={<AdminLogin/>}/>
+
       <Route path="*" element={<Navigate to="/"/>}/>
     </Routes>
     </>
