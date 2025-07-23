@@ -26,6 +26,8 @@ const AdminLogin = () => {
                 <label htmlFor='password'>Password:</label>
                 <input id="password"/>
             </span>
+
+            <button className='submit-button'>Submit</button>
             
         </form>
     </div>

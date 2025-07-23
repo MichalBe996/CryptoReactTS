@@ -165,3 +165,24 @@ label {
   text-align: right;
 }
 
+.form-row > label {
+  width: 80px;
+  display: inline-block;
+  text-align: right;
+}
+
+.form-row > input {
+  height: 30px;
+  color: white;
+  padding: 5px;
+}
+
+.submit-button {
+  background-color: #51158C;
+  color: white;
+  font-weight: 700;
+  font-size: large;
+  margin-top: 20px;
+  padding: 10px;
+  width: 100px;
+}
