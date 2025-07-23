@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import axios from 'axios'
 
 const AdminLogin = () => {
     const [login, setLogin] = React.useState<string>("")
@@ -12,10 +13,15 @@ const AdminLogin = () => {
         setPassword(e.target.value)
     
     }
+
+    const handleFormSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        alert(`THIS ARE YOUR CREDENTIALS - LOGIN: ${login}, PASSWORD: ${password}`)
+    }
   return (
     <div>
         <Navbar/>
-        <form className='admin-form'>
+        <form className='admin-form' onSubmit={handleFormSubmit}>
             <h2>Admin page</h2>
             <span className='form-row'>
                 
@@ -24,10 +30,10 @@ const AdminLogin = () => {
             </span>
             <span className='form-row'>
                 <label htmlFor='password'>Password:</label>
-                <input id="password"/>
+                <input type='password' id="password" onChange={handlePasswordChange}/>
             </span>
 
-            <button className='submit-button'>Submit</button>
+            <button className='submit-button' type='submit'>Submit</button>
             
         </form>
     </div>
