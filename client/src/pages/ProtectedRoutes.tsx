@@ -3,7 +3,7 @@ import {Outlet, Navigate} from "react-router-dom"
 
 
 const ProtectedRoutes = () => {
-    const user = true;
+    const user = 1;
 
     return user ? <Outlet/> : <Navigate to="/adminLogin"/>
 }

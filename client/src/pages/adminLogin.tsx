@@ -1,10 +1,12 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const AdminLogin = () => {
     const [login, setLogin] = React.useState<string>("")
     const [password, setPassword] = React.useState<string>("")
+    const navigate = useNavigate()
     const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLogin(e.target.value)
     
@@ -16,7 +18,7 @@ const AdminLogin = () => {
 
     const handleFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        alert(`THIS ARE YOUR CREDENTIALS - LOGIN: ${login}, PASSWORD: ${password}`)
+        navigate("/admin-dash")
     }
   return (
     <div>

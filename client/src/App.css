@@ -186,3 +186,11 @@ label {
   padding: 10px;
   width: 100px;
 }
+
+.logout-button {
+  width: 150px;
+  font-weight: 500;
+  font-size: larger;
+  color: white;
+  
+}
