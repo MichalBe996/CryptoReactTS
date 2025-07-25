@@ -11,7 +11,7 @@ const AdminNavbar = () => {
             <ul className='nav--links'>
                 <li><a href="/">Home</a></li>
                 <li><a href="/account-mgmt">Account Mgmt</a></li>
-                <li><a href="/crypt-mgmt">Crypto Mgmt</a></li>
+                <li><a href="/crypto-mgmt">Crypto Mgmt</a></li>
                 <button className='logout-button'>Logout</button>
                 
             </ul>

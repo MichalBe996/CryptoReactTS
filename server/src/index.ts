@@ -8,6 +8,7 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import cryptoRouter from "./db/cryptoRouter"
 import userRouter from "./db/userRouter"
+import { Request, Response, NextFunction } from "express"
 
 
 dotenv.config({path: "./.env"})
@@ -17,8 +18,13 @@ dotenv.config({path: "./.env"})
 const app = express()
 
 app.use(cors({
-    credentials: true
+    credentials: true,
+    origin: "http://localhost:3000",
+    allowedHeaders: ["Content-Type", "Authorization"]
+
 }))
+
+
 app.use(compression())
 app.use(cookieParser())
 app.use(bodyParser.json())
