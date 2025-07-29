@@ -6,6 +6,7 @@ export const getAllCrypto = async (req: Request, res: Response) => {
     
     try {
         const allCrypto = await CryptoModel.find()
+        res.header("Access-Control-Allow-Origin", "*");
         res.status(200).json({
             status: "Success",
             data: allCrypto

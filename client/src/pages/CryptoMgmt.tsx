@@ -14,29 +14,20 @@ const CryptoMgmt = () => {
 
 
   }
-  const getApiData = async () => {
-    await fetch("http://localhost:8080/api/v1/data/68778a798b138232fe78aed5", {
-      method: "GET",
+  const getApiData = () => {
+    axios.get("http://localhost:8080/api/v1/data", {
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      
-
-      },
-      
-      
-      
-      
-
+        "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
     })
-    .then(data=>console.log(data))
-    .catch(error=>console.log(error))
-    
+    .then((response) => console.log(response))
+    .catch((error)=> console.log(error))
   }
 
 
   React.useEffect(()=> {
-    getApiData()
+    getApiData();
   }, [])
   const [cryptoData, setCryptoData] = React.useState<cryptoElement[]>([])
   return (
