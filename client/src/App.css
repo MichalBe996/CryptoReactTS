@@ -194,3 +194,16 @@ label {
   color: white;
   
 }
+
+.admin-crypto-table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.admin-icon {
+  width: 30px;
+  height: 30px;
+}
