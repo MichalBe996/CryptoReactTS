@@ -5,7 +5,9 @@ import editIcon from "../assets/icons8-edit-100.png"
 import deleteIcon from "../assets/icons8-delete-100.png"
 
 const CryptoMgmt = () => {
+  const [cryptoDataLoaded, setCryptoDataLoaded] = React.useState<Boolean>(true)
   const adminTableHeaders = [
+    {key: "_id", label: "ID"},
     {key: "name", label: "Name"},
     {key: "symbol", label: "Symbol"},
     {key: "price", label: "Price (USD)"},
@@ -34,14 +36,40 @@ const CryptoMgmt = () => {
     })
     .then((response) =>setCryptoData(response.data.data))
     .catch((error)=> console.log(error))
+    
   }
 
 
   React.useEffect(()=> {
-    getApiData();
+    getApiData()
+    
   }, [])
+
+  const handleDeleteButton = (id: string) => {
+    axios.delete(`http://localhost:8080/api/v1/data/${id}`, {
+      params: {
+        id: id
+      }
+    })
+    .then(response=> console.log(response))
+    .catch(error => console.log(error))
+    window.location.reload()
+
+
+  }
+
+
+  const handleEditButton = () => {
+
+  }
+
   const [cryptoData, setCryptoData] = React.useState<cryptoElement[]>([])
+
+
+
+
   return (
+    cryptoDataLoaded ? 
     <div>
         <AdminNavbar/>
         <div className='admin-crypto-table-container'>
@@ -56,11 +84,14 @@ const CryptoMgmt = () => {
             <tbody>
               {cryptoData.map((element)=> {
                 return <tr>
+                  <td>{element._id}</td>
                   <td>{element.name}</td>
                   <td>{element.symbol}</td>
                   <td>{element.price}</td>
                   <td><img className="admin-icon"src={editIcon}/></td>
-                  <td><img className="admin-icon" src={deleteIcon}/></td>
+                  <td><img className="admin-icon" src={deleteIcon} onClick={()=>{
+                    handleDeleteButton(element._id)
+                  }}/></td>
                 
                 </tr>
               })}
@@ -69,6 +100,7 @@ const CryptoMgmt = () => {
         </div>
        
     </div>
+    : <h2>Loading...</h2>
   )
 }
 
