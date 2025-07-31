@@ -8,10 +8,11 @@ const AdminNavbar = () => {
             <img src={mainLogo} alt="logo" className='logo'/>   
             <h3 className='page-name'>CryptoTSR</h3>
             <nav>
-            <ul className='nav--links'>
+            <ul className='nav--links--admin'>
                 <li><a href="/">Home</a></li>
                 <li><a href="/account-mgmt">Account Mgmt</a></li>
                 <li><a href="/crypto-mgmt">Crypto Mgmt</a></li>
+                <li><a href="/add-crypto">Add Crypto</a></li>
                 <button className='logout-button'>Logout</button>
                 
             </ul>
