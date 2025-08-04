@@ -23,7 +23,20 @@ const AddCrypto = () => {
 
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log(newCryptoData)
+        await axios.post("http://localhost:8080/api/v1/data", {
+            name: newCryptoData.name,
+            symbol: newCryptoData.symbol,
+            price: newCryptoData.price,
+            percent1h: newCryptoData.percent1h,
+            percent24h: newCryptoData.percent24h
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+            
+            }
+        })
+        .then(res => console.log(res))
+        .catch(error=> console.log(error))
     }
   return (
     <div>

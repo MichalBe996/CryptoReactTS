@@ -49,8 +49,7 @@ export const getCryptoById = async (req: Request, res: Response) => {
 export const createCrypto = async (req: Request, res: Response, values: Record<string, any>) => {
 
     try {
-      const values = req.body
-      let newCrypto = await new CryptoModel(values).save().then((user)=> user.toObject())
+      const newCrypto = await CryptoModel.create({...req.body})
       res.status(201).json({
         status: "Success",
         data: newCrypto

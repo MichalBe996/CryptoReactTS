@@ -16,9 +16,21 @@ const AdminLogin = () => {
     
     }
 
-    const handleFormSubmit = (e: React.FormEvent) => {
+    const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        navigate("/admin-dash")
+        await axios.post("http://localhost:8080/api/v1/users/login", {
+            email: login,
+            password: password
+        },
+    {
+        headers: {
+            "Content-Type": "application/json",
+            withCredentials: true,
+            
+        }
+    })
+    .then(res => console.log(res))
+    .catch(error => console.log(error))
     }
   return (
     <div>
