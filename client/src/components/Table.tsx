@@ -3,6 +3,7 @@ import axios from 'axios'
 
 
 const TableComponent = () => {
+  const [tableData, setTableData] = React.useState([])
   interface apiElement {
     name: string,
     symbol: string,
@@ -11,6 +12,20 @@ const TableComponent = () => {
     percent24H: number
 
   }
+  const getApiData = () => {
+    axios.get("http://localhost:8080/api/v1/data", {
+      headers: {
+        "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
+    })
+    .then((response) =>setTableData(response.data.data))
+    .catch((error)=> console.log(error))
+    
+  }
+  React.useEffect(()=> {
+    getApiData()
+  }, [])
   const [keyToSort, setKeyToSort] = React.useState<string>()
   const [sortOrder, setSortOrder] = React.useState<string>("desc")
   const clickOnHeader = (header: any) => {
@@ -51,37 +66,7 @@ const TableComponent = () => {
       }
     
   }
-  const [apiData, setApiData] = React.useState<apiElement[]>([
-    {
-      name: "Bitcoin",
-      symbol: "BTC",
-      price: 109436.10,
-      percent1H: 1.4,
-      percent24H: -1.6
-    },
-    {
-      name: "Ethereum",
-      symbol: "ETH",
-      price: 2463.83,
-      percent1H: 1.4,
-      percent24H: -2
-    },
-    {
-      name: "Avalanche",
-      symbol: "AVAX",
-      price: 17.46,
-      percent1H: -0.7,
-      percent24H: -2
-    },
-    {
-      name: "Cardano",
-      symbol: "ADA",
-      price: 0.56,
-      percent1H: 1.4,
-      percent24H: 7
-    },
-
-  ])
+ 
 
  
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
@@ -114,7 +99,7 @@ const TableComponent = () => {
           
         </thead>
         <tbody>
-          {getSortedArray(apiData).map((crypto)=>{
+          {getSortedArray(tableData).map((crypto)=>{
             return(
               <tr key={crypto.name}>
                 <td>{`${crypto.name} • ${crypto.symbol}`}</td>

@@ -27,11 +27,12 @@ const AddCrypto = () => {
             name: newCryptoData.name,
             symbol: newCryptoData.symbol,
             price: newCryptoData.price,
-            percent1h: newCryptoData.percent1h,
-            percent24h: newCryptoData.percent24h
+            percent1H: newCryptoData.percent1h,
+            percent24H: newCryptoData.percent24h
         }, {
             headers: {
                 "Content-Type": "application/json",
+                withCredentials: true,
             
             }
         })
