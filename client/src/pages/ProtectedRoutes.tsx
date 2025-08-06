@@ -1,11 +1,12 @@
 import {Outlet, Navigate} from "react-router-dom"
+import Cookies from "js-cookie";
 
 
 
 const ProtectedRoutes = () => {
     const user = 1;
 
-    return user ? <Outlet/> : <Navigate to="/adminLogin"/>
+    return Cookies.get("user") ? <Outlet/> : <Navigate to="/adminLogin"/>
 }
 
 

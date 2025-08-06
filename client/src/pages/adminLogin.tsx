@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import { useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 import axios from 'axios'
 
 const AdminLogin = () => {
@@ -29,9 +30,10 @@ const AdminLogin = () => {
             
         }
     })
-    .then(res => console.log(res))
+    .then(res => Cookies.set("user", res.data.token, {expires: 7}))
     .catch(error => console.log(error))
     }
+    navigate("/crypto-mgmt")
   return (
     <div>
         <Navbar/>

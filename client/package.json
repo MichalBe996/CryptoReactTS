@@ -14,7 +14,9 @@
     "@types/react-dom": "^19.1.6",
     "axios": "^1.10.0",
     "bootstrap": "^5.3.7",
+    "js-cookie": "^3.0.5",
     "react": "^19.1.0",
+    "react-cookie": "^8.0.1",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",
     "react-scripts": "5.0.1",
@@ -44,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6"
   }
 }
