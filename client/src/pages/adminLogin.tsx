@@ -32,8 +32,9 @@ const AdminLogin = () => {
     })
     .then(res => Cookies.set("user", res.data.token, {expires: 7}))
     .catch(error => console.log(error))
-    }
     navigate("/crypto-mgmt")
+    }
+    
   return (
     <div>
         <Navbar/>

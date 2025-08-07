@@ -10,6 +10,7 @@ import {Routes, Route, Navigate} from "react-router-dom"
 
 import ProtectedRoutes from './pages/ProtectedRoutes';
 import AddCrypto from './pages/AddCrypto';
+import EditCrypto from './pages/EditCrypto';
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/account-mgmt" element={<AccountMgmt/>}/>
         <Route path="/crypto-mgmt" element={<CryptoMgmt/>}/>
         <Route path="/add-crypto" element={<AddCrypto/>}/>
+        <Route path="/crypto/:id" element={<EditCrypto/>}/>
         
       </Route>
 

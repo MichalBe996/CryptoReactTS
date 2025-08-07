@@ -1,10 +1,12 @@
 import React from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import AdminNavbar from '../components/adminNavbar'
 import editIcon from "../assets/icons8-edit-100.png"
 import deleteIcon from "../assets/icons8-delete-100.png"
 
 const CryptoMgmt = () => {
+  const navigate = useNavigate()
   const [cryptoDataLoaded, setCryptoDataLoaded] = React.useState<Boolean>(true)
   const adminTableHeaders = [
     {key: "_id", label: "ID"},
@@ -57,16 +59,11 @@ const CryptoMgmt = () => {
 
 
   }
-
-
-  const handleEditButton = () => {
-
+  const handleEditButton = (id: string) => {
+    navigate(`/crypto/${id}`)
   }
 
   const [cryptoData, setCryptoData] = React.useState<cryptoElement[]>([])
-
-
-
 
   return (
     cryptoDataLoaded ? 
@@ -88,7 +85,9 @@ const CryptoMgmt = () => {
                   <td>{element.name}</td>
                   <td>{element.symbol}</td>
                   <td>{element.price}</td>
-                  <td><img className="admin-icon"src={editIcon}/></td>
+                  <td><img className="admin-icon"src={editIcon} onClick={()=>{
+                    handleEditButton(element._id)
+                  }}/></td>
                   <td><img className="admin-icon" src={deleteIcon} onClick={()=>{
                     handleDeleteButton(element._id)
                   }}/></td>
