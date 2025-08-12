@@ -7,7 +7,6 @@ const EditCrypto = () => {
     
     
     const [singleCryptoData, setSingleCryptoData] = React.useState({})
-    const [loading, setIsLoading] = React.useState(true)
     const {pageID} = useParams()
     
     React.useEffect(()=> {
@@ -20,15 +19,22 @@ const EditCrypto = () => {
         })
         .then(response => setSingleCryptoData(response.data))
         .catch(error => console.log(error))
-        setIsLoading(false)
+        
     }, [])
   return (
-    loading ? <h1>Loading...</h1> :
+    
     
     <div>
         <AdminNavbar/>
-       <div>
-            <p>singleCryptoData</p>
+       <div className='edit-crypto-columns'>
+            <div className='edit-crypto-current-data'>
+                <h3>singleCryptoData.name</h3>
+                <h3>singleCryptoData.symbol</h3>
+
+            </div>
+            <form className='edit-crypto-form'>
+
+            </form>
         </div>
     </div>
   )
