@@ -243,3 +243,12 @@ input {
   color: white;
   background-color: #51158C;
 }
+
+.edit-crypto-columns {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
