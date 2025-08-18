@@ -46,7 +46,17 @@ const EditCrypto = () => {
         
     }, [])
     console.log(singleCryptoData)
+
+    const handleFormChange = () => {
+
+    }
     
+    
+    const handleFormSubmit = () => {
+
+    }
+    
+
     
   return (
     
@@ -71,6 +81,27 @@ const EditCrypto = () => {
 
             </div>
             <form className='edit-crypto-form'>
+                <span className='form-row'>
+                    <label htmlFor='name'>New name:</label>
+                    <input id='name' /> 
+                </span>
+                <span className='form-row'>
+                    <label htmlFor='symbol'>New symbol:</label>
+                    <input id='symbol' /> 
+                </span>
+                <span className='form-row'>
+                    <label htmlFor='price'>New price:</label>
+                    <input id='name' /> 
+                </span>
+                <span className='form-row'>
+                    <label htmlFor='percent1H'>New percent1H:</label>
+                    <input id='percent1H' /> 
+                </span>
+                <span className='form-row'>
+                    <label htmlFor='percent24H'>New percent24H:</label>
+                    <input id='percent24H' /> 
+                </span>
+                
 
             </form>
         </div>
