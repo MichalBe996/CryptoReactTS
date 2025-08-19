@@ -45,15 +45,22 @@ const EditCrypto = () => {
         
         
     }, [])
-    console.log(singleCryptoData)
+   
 
-    const handleFormChange = () => {
+    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+
+        setSingleCryptoData({
+            ...singleCryptoData, 
+            [e.target.id]: e.target.value
+        })
+
 
     }
     
     
-    const handleFormSubmit = () => {
-
+    const handleFormSubmit = (e: React.FormEvent) => {
+        console.log("NEW DATA", singleCryptoData)
     }
     
 
@@ -68,7 +75,7 @@ const EditCrypto = () => {
                 {
                     isLoading ? <p>Loading...</p>
                     
-                : <div>     
+                : <div className='current-data'>     
                         <h3>id: {singleCryptoData._id}</h3>
                         <h3>Name: {singleCryptoData.name}</h3>
                         <h3>Symbol: {singleCryptoData.symbol}</h3>
@@ -80,30 +87,39 @@ const EditCrypto = () => {
                 
 
             </div>
-            <form className='edit-crypto-form'>
+            <div>
+                <form className='admin-form' onSubmit={handleFormSubmit}>
                 <span className='form-row'>
                     <label htmlFor='name'>New name:</label>
-                    <input id='name' /> 
+                    <input id='name' onChange={handleFormChange} /> 
                 </span>
                 <span className='form-row'>
                     <label htmlFor='symbol'>New symbol:</label>
-                    <input id='symbol' /> 
+                    <input id='symbol' onChange={handleFormChange}/> 
                 </span>
                 <span className='form-row'>
                     <label htmlFor='price'>New price:</label>
-                    <input id='name' /> 
+                    <input id='price' onChange={handleFormChange}/> 
                 </span>
                 <span className='form-row'>
                     <label htmlFor='percent1H'>New percent1H:</label>
-                    <input id='percent1H' /> 
+                    <input id='percent1H' onChange={handleFormChange}/> 
                 </span>
                 <span className='form-row'>
                     <label htmlFor='percent24H'>New percent24H:</label>
-                    <input id='percent24H' /> 
+                    <input id='percent24H' onChange={handleFormChange}/> 
                 </span>
+
+
+                <button className="submit-button" type='submit'>
+                    Submit
+                </button>
                 
 
             </form>
+
+            </div>
+            
         </div>
     </div>
   )
