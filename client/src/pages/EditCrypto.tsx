@@ -91,23 +91,23 @@ const EditCrypto = () => {
                 <form className='admin-form' onSubmit={handleFormSubmit}>
                 <span className='form-row'>
                     <label htmlFor='name'>New name:</label>
-                    <input id='name' onChange={handleFormChange} /> 
+                    <input id='name' onChange={handleFormChange} value={singleCryptoData.name}/> 
                 </span>
                 <span className='form-row'>
                     <label htmlFor='symbol'>New symbol:</label>
-                    <input id='symbol' onChange={handleFormChange}/> 
+                    <input id='symbol' onChange={handleFormChange} value={singleCryptoData.symbol}/> 
                 </span>
                 <span className='form-row'>
                     <label htmlFor='price'>New price:</label>
-                    <input id='price' onChange={handleFormChange}/> 
+                    <input type="number" id='price' onChange={handleFormChange} value={singleCryptoData.price}/> 
                 </span>
                 <span className='form-row'>
                     <label htmlFor='percent1H'>New percent1H:</label>
-                    <input id='percent1H' onChange={handleFormChange}/> 
+                    <input type="number" id='percent1H' onChange={handleFormChange} value={singleCryptoData.percent1H}/> 
                 </span>
                 <span className='form-row'>
                     <label htmlFor='percent24H'>New percent24H:</label>
-                    <input id='percent24H' onChange={handleFormChange}/> 
+                    <input type="number" id='percent24H' onChange={handleFormChange} value={singleCryptoData.percent24H}/> 
                 </span>
 
 
