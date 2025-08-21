@@ -37,7 +37,7 @@ const EditCrypto = () => {
             headers: {
                 "content-type": "application/json",
                 "Access-Control-Allow-Origin": "*"
-            }
+            }, 
         })
         .then(response => setSingleCryptoData(response.data.data))
         .catch(error => console.log(error))
@@ -59,8 +59,23 @@ const EditCrypto = () => {
     }
     
     
-    const handleFormSubmit = (e: React.FormEvent) => {
-        console.log("NEW DATA", singleCryptoData)
+    const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        await axios.put(`http://localhost:8080/api/v1/data/${pageID.id}`, {
+            name: singleCryptoData.name,
+            symbol: singleCryptoData.symbol,
+            price: singleCryptoData.price,
+            percent1H: singleCryptoData.percent1H,
+            percent24H: singleCryptoData.percent24H
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                withCredentials: true,
+            }
+        })
+        .then(res => console.log(res))
+        .catch(error => console.log(error))
+        
     }
     
 

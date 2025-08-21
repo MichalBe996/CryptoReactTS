@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllCrypto, getCryptoById, deleteCryptoById, createCrypto } from "./cryptoController";
+import { getAllCrypto, getCryptoById, deleteCryptoById, createCrypto, updateCryptoById } from "./cryptoController";
 
 
 const cryptoRouter = express.Router()
@@ -12,6 +12,7 @@ cryptoRouter.route("/")
 cryptoRouter.route("/:id")
     .get(getCryptoById)
     .delete(deleteCryptoById)
+    .put(updateCryptoById)
 
 
 export default cryptoRouter;
