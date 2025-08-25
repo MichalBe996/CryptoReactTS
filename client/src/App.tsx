@@ -29,9 +29,9 @@ function App() {
         <Route path="/add-crypto" element={<AddCrypto/>}/>
         <Route path="/crypto/:id" element={<EditCrypto/>}/>
         
+        
       </Route>
-
-      <Route path="*" element={<Navigate to="/"/>}/>
+    <Route path="*" element={<Navigate to="/"/>}/>
     </Routes>
     </>
     
