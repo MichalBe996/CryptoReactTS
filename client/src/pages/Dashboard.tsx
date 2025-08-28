@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import axios from 'axios'
+import { BarChart } from '@mui/x-charts'
 
 
 
@@ -21,16 +22,48 @@ const Dashboard = () => {
   } )
   .then(res => setApiData(res.data.data))
   .catch(err=> console.log(err))
+
   setPageLoading(false)
+
+  
 
 }
 
 React.useEffect(()=> {
+
   getApiData(apiUrl)
+
+  
+  
 }, [])
   return ( pageLoading? <h1>Loading...</h1> :
     <div>
         <Navbar/>
+        <BarChart className='chart' 
+        xAxis={[
+          {
+          id: "cryptoNames",
+          data: ["test1", "test2", "test3"],
+          
+          
+        }
+          
+
+
+        ]}
+        series={[
+          {
+            data: [2, 5, 3],
+            color: "#51158C",
+            
+          
+          },
+          
+        ]}
+        height={400}
+        borderRadius={10}
+        />
+        
     </div>
   )
 }
